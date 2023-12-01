@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{{movies.movie}}
+<br>
+{{movies.des}}
+<br>
+{{movies.year}}
+<br>
+<img src="{{movies.image.url}}">
+
+{% endblock %}

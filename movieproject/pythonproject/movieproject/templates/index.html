@@ -1,0 +1,12 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for i in movies %}
+<a href="{% url 'movieapp:details' i.id %}">{{i.movie}}</a><br><br>
+{% endfor %}
+
+<a href="{% url 'movieapp:addmovies' %}"><button>add new movies</button></a>
+
+{% endblock %}
