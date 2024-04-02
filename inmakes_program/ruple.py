@@ -1,0 +1,7 @@
+x=("a",'b','c',)
+print(type(x))
+y=list(x)
+y.append('d')
+print(y)
+print(type(x))
+print(x[1])

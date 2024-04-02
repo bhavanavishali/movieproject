@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Movies
+from .forms import MovieForm
 
 # Create your views here.
 
@@ -19,4 +20,18 @@ def add_movies(request):
         movies.save()
 
     return render(request,'addmovies.html')
-     
+def update(request,id):
+    movies = Movies.objects.get(id=id)
+    form =MovieForm(request.POST or None,instance=movies)
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    return render(request,'update.html',{'form':form,'movies':movies})
+
+
+def delete(request,id):
+    if request.method == 'POST':
+        movies=Movies.objects.get(id=id)
+        movies.delete()
+        return redirect('/')
+    return render(request,'delete.html')
