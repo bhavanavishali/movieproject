@@ -1,29 +1,36 @@
 
 {% extends 'base.html' %}
+{% load static %}
 
-{% block body %}
+{% block body %} 
 
+{% if category == None %}
+<center><h2>All movie list </h2></center>
+{% else %}
+<center><h2>Movies in Category: {{ category.c_name }}</h2></center>
+{% endif %}
 {% for i in movies %}
 
 <!-- <a href="{% url 'movieapp:details' i.id %}">{{i.movie}}</a><br><br> -->
 
 <div class="container">
-    <div class="row">
-<div class="col-md-3 col-9 col-sm-12 mb-3">
-<div class="card" style="width: 18rem;">
-    <img src="{{i.image.url}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{i.movie}}</h5>
-      
-      <a href="{% url 'movieapp:details' i.id %}" class="btn btn-primary">click here</a>
+    <div class="row mx_auto mt-5">
+      <div class="col-md-3 col-9 col-sm-12 mb-3">
+      <div class="card" style="width: 18rem;">
+          <img src="{{i.image.url}}">
+          <div class="card-body">
+            <h5 class="card-title">{{i.movie}}</h5>
+            
+            <a href="{% url 'movieapp:details' i.id %}" class="btn btn-primary">click here</a>
+
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</div>
 </div>
 
 {% endfor %}
 
-<a href="{% url 'movieapp:addmovies' %}"><button>add new movies</button></a>
+
 
 {% endblock %}

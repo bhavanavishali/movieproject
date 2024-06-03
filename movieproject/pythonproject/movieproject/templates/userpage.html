@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<h1>ALL MOVIES LIST</h1>
+{% for movie in movies %}
+        <li>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-2">
+              <div class="card" style="width: 18rem;">
+                
+                  <div class="card-body">
+                    <h5 class="card-title">{{movie.movie}}</h5>
+                    
+                    <a href="{% url 'movieapp:details' movie.id %}" class="btn btn-primary">click here</a>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+            
+        </li>
+    {% endfor %}
+<h1>Your Movies</h1>
+{% if movies %}
+<ul>
+    {% for movie in user_movie %}
+        <li>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-2">
+              <div class="card" style="width: 18rem;">
+                
+                  <div class="card-body">
+                    <h5 class="card-title">{{movie.movie}}</h5>
+                    
+                    <a href="{% url 'movieapp:details' movie.id %}" class="btn btn-primary">click here</a>
+                    <a href="{% url 'movieapp:update' movie.id %}" class="btn btn-primary">Update</a>
+                    <a href="{% url 'movieapp:delete' movie.id %}" class="btn btn-primary">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+            
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<h2>no movies found </h2>
+{% endif %}
+{% endblock %}

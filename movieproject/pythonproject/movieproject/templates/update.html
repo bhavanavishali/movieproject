@@ -1,5 +1,18 @@
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">submit</button>
-</form>
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<div class=" container">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Update movie</legend>
+            {{form|crispy}}
+        </fieldset>
+        <div class="form-group">
+            <button href="" class="btn btn-outline-info" type="submit">
+                Update
+            </button>
+        </div>
+    </form>
+</div>

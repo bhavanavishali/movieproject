@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+</head>
+<body>
+    <h1>User Details</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Movie ID</th>
+                <th>Moviename</th>
+                <th>User</th>
+                <th></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movie %}
+            <tr>
+                <td>{{ movie.id }}</td>
+                <td>{{ movie.movie }}</td>
+                <td>{{ movie.user.username}}</td>
+                <td><a href="{% url 'movieapp:delete' movie.id %}"><button>Delete</button></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>
